@@ -1,0 +1,129 @@
+.home-container {
+    display: grid;
+    grid-gap: 2rem 3rem;
+    grid-template-columns: repeat(auto-fill, minmax(15rem, 25rem));
+    justify-content: center;
+}
+
+.home-countries{
+    height: auto;
+    box-shadow: 0 0 5px 0.1px black;
+    border-radius: 2px;
+    margin-top: 2rem;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
+
+.home-countries-details{
+    font-size: 14px;
+    color: hsl(0, 0%, 100%);
+    padding: 1rem;
+}
+
+.search {
+    grid-column: 1 / 2;
+    margin-top: 2rem;
+}
+
+.dropdown {
+    /* width: 10rem; */
+    grid-column: auto / -1;
+    position: relative;
+    display: inline-block;
+    margin-top: 2rem;
+    justify-self: end;
+}
+
+.dropbtn {
+    /* width: 10rem; */
+    height: 2.5rem;
+    border: none;
+    border-radius: 3px;
+    padding: 0 1rem;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    text-align: left;
+    border-top: 2px solid hsl(207,26%,17%);
+    color: hsl(0, 0%, 100%);
+    border-radius: 3px;
+}
+
+.dropdown-content a {
+    text-decoration: none;
+    display: block;
+    color: hsl(0, 0%, 100%);
+    padding: 0.2rem 0.5rem;
+    /* text-align: center; */
+    width: 100%;
+}
+
+a:hover {
+    background-color: hsl(207,26%,17%);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+.country-search{
+    width: 20rem;
+    height: 2.5rem;
+    border: none;
+    border-radius: 3px;
+    padding-left: 2rem;
+}
+
+@media only screen and (max-width: 375px){
+    .search {
+        margin: 2rem auto;
+    }
+    
+    .dropdown{
+        justify-self: start;
+        margin: 0 auto;
+    }
+
+    .dropbtn {
+        width: 40vw;
+    }
+
+    .home-container {
+        justify-content: start;
+    }
+
+    .home-countries {
+        width: 80vw;
+        margin: 0 auto;
+    }
+}
+
+@media only screen and (min-width: 376px) and (max-width: 847px){
+    .search {
+        margin: 2rem auto;
+    }
+    
+    .dropdown{
+        justify-self: start;
+        margin: 0 auto;
+    }
+
+    .dropbtn {
+        width: 30vw;
+        justify-self: start;
+    }
+
+    .home-container {
+        justify-content: center;
+    }
+
+    .home-countries {
+        margin: 0 auto;
+    }
+}

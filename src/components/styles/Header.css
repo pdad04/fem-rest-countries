@@ -1,0 +1,13 @@
+.main-header {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.header-text {
+margin-left: 3rem;
+}
+.mode {
+margin-right: 3rem;
+justify-self: end;
+}
+  
