@@ -2,6 +2,7 @@ import React from 'react';
 import './styles/Home.css';
 
 function Home(props) {
+    const showError = props.error ? 'show' : 'hidden'
     return (
         <section className="home-container">
             <div className="search">
@@ -11,6 +12,7 @@ function Home(props) {
                     className="country-search dark-mode-elements"
                     onChange={props.getTextInput()}
                  />
+                 <div className={`error ${showError}`}>Not Found</div>
             </div>
             <div className="dropdown">
                 <button className="dropbtn dark-mode-elements">Filter By Region</button>
@@ -22,36 +24,25 @@ function Home(props) {
                     <div onClick={props.fetchRegion()}>Oceania</div>
                 </div>
             </div>
-            {props.countries.map(country => (
-                <div className="home-countries dark-mode-elements" key={country.name}>
+            {props.countries.map((country, idx) => (
+                <div 
+                    className="home-countries dark-mode-elements" 
+                    key={country.name}
+                    data-index={idx}
+                    onClick={props.getDetails()}
+                >
                     <div className="country-flag">
                         <div className="img" style={{backgroundImage: `url(${country.flag})`}}>
                         </div>
-                         {/* <img src={country.flag} alt={`${country.name} flag`} /> */}
                     </div>
                     <div className="home-countries-details">
                         <h3>{country.name}</h3>
-                        <p>Population: {country.population}</p>
+                        <p>Population: {country.population.toLocaleString()}</p>
                         <p>Region: {country.region}</p>
-                        <p>Capital: {country.capital}</p>
+                        <p>Capital: {country.capital ? country.capital : 'N/A'}</p>
                     </div>
                 </div>
             ))}
-             {/* <div className="home-countries dark-mode-elements">
-                <img src="https://restcountries.eu/data/usa.svg"></img>
-                <div className="home-countries-details">
-                    <h3>United States of America</h3>
-                    <p><b>Population:</b>323,947,000</p>
-                    <p><b>Region:</b>Americas</p>
-                    <p><b>Capital:</b>Washington, D.C</p>
-                </div>
-            </div>
-            <div className="home-countries dark-mode-elements">2</div>
-            <div className="home-countries dark-mode-elements">3</div>
-            <div className="home-countries dark-mode-elements">4</div>
-            <div className="home-countries dark-mode-elements">5</div>
-            <div className="home-countries dark-mode-elements">6</div>
-            <div className="home-countries dark-mode-elements">7</div>  */}
         </section>
     )
 }
