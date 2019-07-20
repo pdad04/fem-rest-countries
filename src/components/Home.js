@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/Home.css';
 
 function Home(props) {
@@ -25,23 +26,24 @@ function Home(props) {
                 </div>
             </div>
             {props.countries.map((country, idx) => (
-                <div 
-                    className="home-countries dark-mode-elements" 
-                    key={country.name}
-                    data-index={idx}
-                    onClick={props.getDetails()}
-                >
-                    <div className="country-flag">
-                        <div className="img" style={{backgroundImage: `url(${country.flag})`}}>
+                <Link to={{ pathname:`/details/${country.name}` }} key={country.name}>
+                    <div 
+                        className="home-countries dark-mode-elements" 
+                        data-index={idx}
+                        onClick={props.getDetails()}
+                    >
+                        <div className="country-flag">
+                            <div className="img" style={{backgroundImage: `url(${country.flag})`}}>
+                            </div>
+                        </div>
+                        <div className="home-countries-details">
+                            <h3>{country.name}</h3>
+                            <p>Population: {country.population.toLocaleString()}</p>
+                            <p>Region: {country.region}</p>
+                            <p>Capital: {country.capital ? country.capital : 'N/A'}</p>
                         </div>
                     </div>
-                    <div className="home-countries-details">
-                        <h3>{country.name}</h3>
-                        <p>Population: {country.population.toLocaleString()}</p>
-                        <p>Region: {country.region}</p>
-                        <p>Capital: {country.capital ? country.capital : 'N/A'}</p>
-                    </div>
-                </div>
+                </Link>
             ))}
         </section>
     )

@@ -1,18 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Details from './components/Details';
 
 function App() {
-
   const [countries, setCountries] = useState()
-  let [fetchedCountries, setFetched] = useState(false);
+  const [fetchedCountries, setFetched] = useState(false);
   const [detailCountry, setDetailCountry] = useState();
   const [error, setError] = useState(false);
 
   useEffect(() => {
-
     fetchAllCountries();
 
   }, []);
@@ -32,7 +31,7 @@ function App() {
   }
 
   async function fetchCountryByName(e){
-    if(e.target.value.trim().length !== 0){
+    if(e.target.value.trim().length !== 0){ /* Ensure search is not done if only spaces are entered */
       const result = await fetch(`https://restcountries.eu/rest/v2/name/${e.target.value}`)
       const resultJSON = await result.json();
       
@@ -54,30 +53,37 @@ function App() {
     setDetailCountry(country);
   }
 
-  if(fetchedCountries && !detailCountry){
+  if(fetchedCountries){
     return (
-      <div className="App">
-        <Header />
-        <Home 
-          countries={countries}
-          fetchRegion={() => fetchRegion}
-          getTextInput={() => fetchCountryByName}
-          getDetails={(e) => getDetails}
-          error={error}
-        />
-        {/* <Details /> */}
-      </div>
+    <div className="App">
+      <Router>
+          <Route path="/" render={Header} />
+          <Route exact path="/"
+            render={props =>( 
+            <Home {...props}
+              countries={countries}
+              getAll={() => fetchAllCountries}
+              fetchRegion={() => fetchRegion}
+              getTextInput={() => fetchCountryByName}
+              getDetails={(e) => getDetails}
+              error={error}
+            />)}
+          />
+          <Route path="/details"
+                 render={props => (
+                   <Details {...props}
+                    country={detailCountry}
+                 />)}
+          />
+      </Router>
+    </div>
     )
-  }else if(detailCountry){
-    return(
-      <Details
-        country={detailCountry}
-      />
-    );
   }else{
     return (
       <div className="App">
-        <Header />
+        <Router>
+          <Route path="/" render={Header} />
+        </Router>
       </div>
     )
   }

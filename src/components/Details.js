@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './styles/Details.css';
 
 function Details(props) {
@@ -6,7 +7,7 @@ function Details(props) {
         <section className="country-details">
             <div className="detail-flag">
                 <div className="back-button dark-mode-elements">
-                    Back
+                    <Link to="/">Back</Link>
                 </div>
                 <div>
                     <img src={props.country[0].flag} alt={`${props.country[0].name} flag`} />
