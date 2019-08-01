@@ -47,13 +47,21 @@ a {
 
 .detail-heading {
     font-weight: 800;
+    margin-bottom: 2rem;
 }
 
 .border-country {
-    padding: 0.2rem 1rem;
+    padding: 0.3rem;
     margin: 0.5rem;
     border-radius: 3px;
     box-shadow: 0 0 1px 0.1px black;
+    height: 2rem;
+    white-space: nowrap;
+}
+
+.country-borders {
+    display: flex;
+    flex-direction: row;
 }
 
 @media only screen and (max-width: 415px){

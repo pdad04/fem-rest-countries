@@ -7,9 +7,6 @@ function Header() {
             <div className="header-text">
                 <h3>Where in the world?</h3>
             </div>
-            <div className="mode">
-                <h4>Dark Mode</h4>
-            </div>
         </header>
     )
 }

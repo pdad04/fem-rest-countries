@@ -12,6 +12,7 @@ function Home(props) {
                     placeholder="Search for country" 
                     className="country-search dark-mode-elements"
                     onChange={props.getTextInput()}
+                    value={props.searchText}
                  />
                  <div className={`error ${showError}`}>Not Found</div>
             </div>

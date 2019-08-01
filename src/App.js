@@ -9,6 +9,7 @@ function App() {
   const [countries, setCountries] = useState()
   const [fetchedCountries, setFetched] = useState(false);
   const [detailCountry, setDetailCountry] = useState();
+  let [searchText, setSearchText] = useState('');
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -31,6 +32,8 @@ function App() {
   }
 
   async function fetchCountryByName(e){
+    setSearchText(e.target.value);
+  
     if(e.target.value.trim().length !== 0){ /* Ensure search is not done if only spaces are entered */
       const result = await fetch(`https://restcountries.eu/rest/v2/name/${e.target.value}`)
       const resultJSON = await result.json();
@@ -47,10 +50,11 @@ function App() {
     }
   }
 
-  function getDetails(e){
+  async function getDetails(e){
     const index = parseInt(e.currentTarget.dataset.index);
     const country = countries.slice(index, index + 1);
     setDetailCountry(country);
+
   }
 
   if(fetchedCountries){
@@ -66,6 +70,7 @@ function App() {
               fetchRegion={() => fetchRegion}
               getTextInput={() => fetchCountryByName}
               getDetails={(e) => getDetails}
+              searchText={searchText}
               error={error}
             />)}
           />
