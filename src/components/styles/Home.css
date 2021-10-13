@@ -1,156 +1,199 @@
+.home-region-dropdown {
+  list-style: none;
+  background-color: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+  padding: 1em;
+  border-radius: 0.25rem;
+}
+
+.home-region-dropdown__sub {
+  margin-bottom: 0.5em;
+  list-style: none;
+  text-align: left;
+  background-color: hsl(209, 23%, 22%);
+  padding: 0;
+  display: none;
+}
+
+.home-region-dropdown:hover > .home-region-dropdown__sub {
+  display: block;
+}
+
+.home-region-dropdown__sub-items {
+  margin-top: 0.5em;
+  cursor: pointer;
+  padding: 0 0.5em;
+}
+
+.home-region-dropdown__sub-items:hover,
+.home-region-dropdown__sub-items:focus {
+  border-left: 1px solid white;
+  border-right: 1px solid white;
+}
+
 .home-container {
-    display: grid;
-    grid-gap: 2rem 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 25rem));
-    justify-content: center;
+  width: 100%;
+  max-width: 500px;
+  padding: 2em;
+  margin: 0 auto;
 }
 
-.home-countries{
-    height: auto;
-    box-shadow: 0 0 5px 0.1px black;
-    border-radius: 2px;
-    margin-top: 2rem;
+.search-filter {
+  width: 100%;
+  text-align: center;
 }
 
-.country-flag {
-    width: 100%;
-    height: 250px;
+.home-countries {
+  height: auto;
+  box-shadow: 0 0 5px 0.1px black;
+  border-radius: 2px;
+  margin-top: 2rem;
+}
+
+.card {
+  display: inline-block;
+  margin-bottom: 1rem;
 }
 
 .img {
-    width: 100%;
-    height: 250px;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  width: 100%;
+  padding: 0.25rem;
 }
 
 img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
+  width: 100%;
+  height: auto;
+  object-fit: scale-down;
 }
 
-.home-countries-details{
-    font-size: 14px;
-    color: hsl(0, 0%, 100%);
-    padding: 1rem;
+.home-countries-details {
+  font-size: 0.875rem;
+  color: hsl(0, 0%, 100%);
+  padding: 1rem;
+}
+
+.home-countries-details__text {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.home-countries-details__text li {
+  margin: 0.5rem 0;
 }
 
 .search {
-    grid-column: 1 / 2;
-    margin-top: 2rem;
+  text-align: center;
 }
 
 .dropdown {
-    grid-column: auto / -1;
-    position: relative;
-    display: inline-block;
-    margin-top: 2rem;
-    justify-self: end;
+  /* grid-column: auto / -1; */
+  position: relative;
+  display: inline-block;
+  margin: 2rem auto;
+  /* justify-self: end; */
+  text-align: center;
 }
 
 .dropbtn {
-    height: 2.5rem;
-    border: none;
-    border-radius: 3px;
-    padding: 0 1rem;
+  height: 2.5rem;
+  border: none;
+  border-radius: 3px;
+  padding: 0 1rem;
 }
 
 .dropdown-content {
-    display: none;
-    position: absolute;
-    z-index: 1;
-    width: 100%;
-    text-align: left;
-    border-top: 2px solid hsl(207,26%,17%);
-    color: hsl(0, 0%, 100%);
-    border-radius: 3px;
+  display: none;
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  text-align: left;
+  border-top: 2px solid hsl(207, 26%, 17%);
+  color: hsl(0, 0%, 100%);
+  border-radius: 3px;
 }
 
 .dropdown-content div {
-    text-decoration: none;
-    display: block;
-    color: hsl(0, 0%, 100%);
-    padding: 0.2rem 0.5rem;
-    width: 100%;
-    cursor: pointer;
+  text-decoration: none;
+  display: block;
+  color: hsl(0, 0%, 100%);
+  padding: 0.2rem 0.5rem;
+  width: 100%;
+  cursor: pointer;
 }
 
 .dropdown-content div:hover {
-    background-color: hsl(207,26%,17%);
+  background-color: hsl(207, 26%, 17%);
 }
 
 .dropdown:hover .dropdown-content {
-    display: block;
+  display: block;
 }
-.country-search{
-    width: 20rem;
-    height: 2.5rem;
-    border: none;
-    border-radius: 3px;
-    padding-left: 2rem;
+.country-search {
+  height: 2.5rem;
+  border: none;
+  border-radius: 3px;
+  padding-left: 2rem;
 }
 
 .error {
-    color: hsl(0, 100%, 50%);
-    margin-top: 0.5em;
-    margin-left: 1rem;
-    font-size: 0.7em;
+  color: hsl(0, 100%, 50%);
+  margin-top: 0.5em;
+  margin-left: 1rem;
+  font-size: 0.7em;
 }
 
 .hidden {
-    display: none;
+  display: none;
 }
 
 show {
-    display: block;
-
+  display: block;
 }
-@media only screen and (max-width: 375px){
-    .search {
-        margin: 2rem auto;
-    }
-    
-    .dropdown{
-        justify-self: start;
-        margin: 0 auto;
-    }
+@media only screen and (max-width: 375px) {
+  .search {
+    margin: 2rem auto;
+  }
 
-    .dropbtn {
-        width: 40vw;
-    }
+  .dropdown {
+    justify-self: start;
+    margin: 0 auto;
+  }
 
-    .home-container {
-        justify-content: start;
-    }
+  .dropbtn {
+    width: 40vw;
+  }
 
-    .home-countries {
-        width: 80vw;
-        margin: 0 auto;
-    }
+  .home-container {
+    justify-content: start;
+  }
+
+  .home-countries {
+    width: 80vw;
+    margin: 0 auto;
+  }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 847px){
-    .search {
-        margin: 2rem auto;
-    }
-    
-    .dropdown{
-        justify-self: start;
-        margin: 0 auto;
-    }
+@media only screen and (min-width: 376px) and (max-width: 847px) {
+  .search {
+    margin: 2rem auto;
+  }
 
-    .dropbtn {
-        width: 30vw;
-        justify-self: start;
-    }
+  .dropdown {
+    justify-self: start;
+    margin: 0 auto;
+  }
 
-    .home-container {
-        justify-content: center;
-    }
+  .dropbtn {
+    width: 30vw;
+    justify-self: start;
+  }
 
-    .home-countries {
-        margin: 0 auto;
-    }
+  .home-container {
+    justify-content: center;
+  }
+
+  .home-countries {
+    margin: 0 auto;
+  }
 }
