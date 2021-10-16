@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 .home-region-dropdown {
   list-style: none;
   background-color: hsl(209, 23%, 22%);
@@ -41,6 +45,45 @@
 .search-filter {
   width: 100%;
   text-align: center;
+}
+
+.region-select {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+  color: hsl(0, 0%, 100%);
+  list-style: none;
+  margin-block: 2rem;
+  padding: 0;
+}
+
+.region-select__region {
+  cursor: pointer;
+  display: inline-block;
+  padding: 1em 0.25em;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 0.5rem;
+  width: 5rem;
+  text-align: center;
+}
+
+.region-select__region-active {
+  border: 3px solid hsl(0, 0%, 100%);
+  position: relative;
+}
+
+.region-select__region-active::after {
+  position: absolute;
+  content: "X";
+  width: 1rem;
+  top: -0.6rem;
+  right: -0.75rem;
+  color: red;
+  font-weight: bold;
+  background-color: hsl(0, 0%, 100%);
+  border-radius: 100%;
+  padding: 0.25rem;
 }
 
 .home-countries {
@@ -87,48 +130,12 @@ img {
 }
 
 .dropdown {
-  /* grid-column: auto / -1; */
   position: relative;
   display: inline-block;
   margin: 2rem auto;
-  /* justify-self: end; */
   text-align: center;
 }
 
-.dropbtn {
-  height: 2.5rem;
-  border: none;
-  border-radius: 3px;
-  padding: 0 1rem;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  z-index: 1;
-  width: 100%;
-  text-align: left;
-  border-top: 2px solid hsl(207, 26%, 17%);
-  color: hsl(0, 0%, 100%);
-  border-radius: 3px;
-}
-
-.dropdown-content div {
-  text-decoration: none;
-  display: block;
-  color: hsl(0, 0%, 100%);
-  padding: 0.2rem 0.5rem;
-  width: 100%;
-  cursor: pointer;
-}
-
-.dropdown-content div:hover {
-  background-color: hsl(207, 26%, 17%);
-}
-
-.dropdown:hover .dropdown-content {
-  display: block;
-}
 .country-search {
   height: 2.5rem;
   border: none;

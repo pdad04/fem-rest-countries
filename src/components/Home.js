@@ -1,8 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Home.css';
 
 function Home(props) {
+
+    useEffect(() => {
+        const regionSelect = document.querySelectorAll(".region-select__region");
+        regionSelect.forEach(el => el.addEventListener('click', toggleActiveRegion));
+    }, []);
+
+    const toggleActiveRegion = (e) => {
+        const active = document.querySelectorAll(".region-select__region-active");
+
+        if(active.length !== 0) {
+            active[0].classList.toggle("region-select__region-active")
+            if(active[0].innerHTML === e.target.innerHTML) {
+                props.getAll();
+                return;
+            };
+        }
+
+        e.target.classList.toggle("region-select__region-active");
+        props.fetchRegion(e);
+    }
+
     return (
         <section className="home-container">
             <div className="search-filter">
@@ -17,24 +38,13 @@ function Home(props) {
                      {props.error ? <div className={`error`}>Not Found</div> : <div></div> }
                 </div>
                 <div className="dropdown">
-                    <ul className="home-region-dropdown">
-                        <li>Choose Region</li>
-                        <ul className="home-region-dropdown__sub">
-                            <li className="home-region-dropdown__sub-items" onClick={props.fetchRegion()}>Africa</li>
-                            <li className="home-region-dropdown__sub-items" onClick={props.fetchRegion()}>Americas</li>
-                            <li className="home-region-dropdown__sub-items" onClick={props.fetchRegion()}>Asia</li>
-                            <li className="home-region-dropdown__sub-items" onClick={props.fetchRegion()}>Europe</li>
-                            <li className="home-region-dropdown__sub-items" onClick={props.fetchRegion()}>Oceania</li>
-                        </ul>
+                    <ul className="region-select">
+                        <li className="region-select__region">Africa</li>
+                        <li className="region-select__region">Americas</li>
+                        <li className="region-select__region">Asia</li>
+                        <li className="region-select__region">Europe</li>
+                        <li className="region-select__region">Oceania</li>
                     </ul>
-                    {/* <button className="dropbtn dark-mode-elements">Filter By Region</button>
-                    <div className="dropdown-content dark-mode-elements">
-                        <div onClick={props.fetchRegion()}>Africa</div>
-                        <div onClick={props.fetchRegion()}>Americas</div>
-                        <div onClick={props.fetchRegion()}>Asia</div>
-                        <div onClick={props.fetchRegion()}>Europe</div>
-                        <div onClick={props.fetchRegion()}>Oceania</div>
-                    </div> */}
                 </div>
             </div>
             {props.countries.map((country, idx) => (
@@ -44,11 +54,11 @@ function Home(props) {
                         data-index={idx}
                         onClick={props.getDetails()}
                     >
-                        <div className="country-flag">
-                            <div className="img">
-                                <img src={country.flag} alt="" className="img"/>
-                            </div>
+                    <div className="country-flag">
+                        <div className="img">
+                            <img src={country.flag} alt="" className="img"/>
                         </div>
+                    </div>
                         <div className="home-countries-details">
                             <h3>{country.name}</h3>
                             <ul className="home-countries-details__text">

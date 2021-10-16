@@ -25,8 +25,8 @@ function App() {
 
   }
 
-  async function fetchRegion(e){
-    const result = await fetch(`https://restcountries.eu/rest/v2/region/${e.target.innerHTML}`)
+    const fetchRegion = async (e) => {
+    const result = await fetch(`https://restcountries.com/v2/region/${e.target.innerHTML}`)
     const resultJSON = await result.json();
     setCountries(resultJSON);
   }
@@ -34,9 +34,8 @@ function App() {
   async function fetchCountryByName(e){
     setSearchText(e.target.value);
   
-    if(e.target.value.trim().length !== 0){ /* Ensure search is not done if only spaces are entered */
-      // const result = await fetch(`https://restcountries.eu/rest/v2/name/${e.target.value}`)
-      const result = await fetch(`https://restcountries.com/v3/name/${e.target.value}`)
+    if(e.target.value.trim().length !== 0){ 
+      const result = await fetch(`https://restcountries.com/v2/name/${e.target.value}`)
       const resultJSON = await result.json();
       
       if(!resultJSON.hasOwnProperty('status')){
@@ -67,8 +66,8 @@ function App() {
             render={props =>( 
             <Home {...props}
               countries={countries}
-              getAll={() => fetchAllCountries}
-              fetchRegion={() => fetchRegion}
+              getAll={fetchAllCountries}
+              fetchRegion={fetchRegion}
               getTextInput={() => fetchCountryByName}
               getDetails={(e) => getDetails}
               searchText={searchText}

@@ -2,26 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Details.css';
 
-function Details(props) {
-    const [border, setBorder] = useState();
-
-    useEffect(() => {
-        fetchBorders()
-        
-    },[]);
-
-    async function fetchBorders(){
-        let borders = [];
-        for(let border of props.country[0].borders){
-            const result = await fetch(`https://restcountries.eu/rest/v2/alpha/${border}`)
-            const resultJSON = await result.json();
-            borders = [...borders, resultJSON.name];
-        }
-
-        setBorder(borders);
-    }
-
-    
+function Details(props) {   
     return (
         <section className="country-details">
             <div className="detail-flag">
@@ -50,7 +31,7 @@ function Details(props) {
                 </div>
                 <div className="country-borders">
                 <span className="detail-heading bc">Border Countries: </span>
-                            { border ? border.map((border, idx) => (<span className="border-country dark-mode-elements" key={border}>{border}</span>
+                            { props.country[0].borders ? props.country[0].borders.map((border, idx) => (<span className="border-country dark-mode-elements" key={border}>{border}</span>
                     )) : <span></span>}
                 </div>
             </div>
