@@ -4,9 +4,7 @@ import './styles/Header.css'
 function Header() {
     return (
         <header className="main-header dark-mode-elements">
-            <div className="header-text">
-                <h3>Where in the world?</h3>
-            </div>
+            <h3>Rest Countries</h3>
         </header>
     )
 }

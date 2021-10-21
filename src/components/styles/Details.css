@@ -1,95 +1,99 @@
 a {
-    text-decoration: none;
-    color: hsl(0, 0%, 100%);
+  text-decoration: none;
+  color: hsl(0, 0%, 100%);
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.country-info__details {
+  color: hsl(0, 0%, 100%);
+  margin-bottom: 1rem;
+}
+
+img {
+  width: 100%;
+}
+
+span {
+  font-weight: bolder;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.not-found {
+  text-align: center;
+}
+
+.not-found__text {
+  color: hsl(0, 0%, 100%);
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  font-size: calc(0.75rem + 1vw);
 }
 
 .country-details {
-    position: relative;
-    display: grid;
-    height: 100vh;
-    grid-gap: 0 3rem;
-    grid-template-columns: repeat(auto-fill, minmax(13rem, 32rem));
-    justify-content: end;
+  margin-top: 1rem;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  color: hsl(0, 0%, 100%);
+}
+
+.country-info__details-header {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
+}
+
+.country-details__main {
+  margin-bottom: 1rem;
+}
+
+.country-details__main-back {
+  display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding: 0.5em;
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 0.5rem;
+}
+
+.country-details__main-back:hover {
+  background-color: hsla(209, 23%, 22%, 0.3);
+}
+
+.country-details__main-flag {
+  max-width: 600px;
+}
+
+.country-borders__borders-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.country-border__border-list__item {
+  background-color: hsl(209, 23%, 22%);
+  border-radius: 0.125em;
+  padding: 0.5em;
+}
+
+@media (min-width: 1000px) {
+  .country-details {
+    display: flex;
+    justify-content: center;
     align-items: center;
-    font-size: 16px;
-    color: hsl(0, 0%, 100%);
+    gap: 5rem;
+  }
+
+  .country-details__secondary {
+    align-self: center;
+  }
 }
-
-.back-button {
-    position: absolute;
-    top: 10vh;
-    text-align: center;
-    padding: 0.2rem 1rem;
-    border-radius: 3px;
-    box-shadow: 0 0 1px 0.1px black;
-}
-
-.detail-flag {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-
-}
-
-.detail-flag img {
-    width: 100%;
-    height: auto;
-}
-
-.detail-info {
-    font-size: 14px;
-    display: flex;
-}
-
-.detail-info div{
-    margin-right: 3rem;
-}
-
-.detail-heading {
-    font-weight: 800;
-    margin-bottom: 2rem;
-}
-
-.border-country {
-    padding: 0.3rem;
-    margin: 0.5rem;
-    border-radius: 3px;
-    box-shadow: 0 0 1px 0.1px black;
-    height: 2rem;
-    white-space: nowrap;
-}
-
-.country-borders {
-    display: flex;
-    flex-direction: row;
-}
-
-@media only screen and (max-width: 415px){
-    .country-detail-info {
-        margin: 5vw;
-    }
-
-    .detail-info {
-        flex-direction: column;
-    }
-
-    .detail-flag {
-        width: 90%;
-        margin: 4vw auto;
-    }
-
-    .bc {
-        display: block;
-        margin-bottom: 1rem;
-    }
-
-    .border-country{
-        margin-left: 0;
-    }
-
-    .back-button {
-        top: 1vh;
-    }
-
-}
-

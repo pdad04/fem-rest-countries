@@ -1,42 +1,70 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Details.css';
 
 function Details(props) {   
-    return (
-        <section className="country-details">
-            <div className="detail-flag">
-                <div className="back-button dark-mode-elements">
-                    <Link to="/">Back</Link>
-                </div>
-                <div>
-                    <img src={props.country[0].flag} alt={`${props.country[0].name} flag`} />
-                </div>
-            </div>
-            <div className="country-detail-info">
-                <h1>{props.country[0].name}</h1>
-                <div className="detail-info">
-                    <div>
-                        <p><span className="detail-heading">Native Name: </span>{props.country[0].name}</p>
-                        <p><span className="detail-heading">Population: </span>{props.country[0].population.toLocaleString()}</p>
-                        <p><span className="detail-heading">Region: </span> {props.country[0].region}</p>
-                        <p><span className="detail-heading">Sub Region: </span>{props.country[0].subregion}</p>
-                        <p><span className="detail-heading">Capitol: </span>{props.country[0].capital}</p>
-                    </div>
-                    <div>
-                        <p><span className="detail-heading">Top Level Domain: </span>{props.country[0].topLevelDomain}</p>
-                        <p><span className="detail-heading">Currencies: </span>{props.country[0].currencies[0].name}</p>
-                        <p><span className="detail-heading">Languages: </span>{props.country[0].languages[0].nativeName}</p>
+    const currentCountry = props.match.params.id;
+    const country = props.country ? props.country[0] : JSON.parse(localStorage.getItem(currentCountry));
+
+    useEffect(() => {
+        if(!localStorage.getItem(currentCountry) && props.country) {
+            localStorage.setItem(currentCountry, JSON.stringify(props.country[0]));
+        }
+    }, [])
+
+    if(!country) { 
+        return (
+            <div className="container">
+                <div className="not-found">
+                    <h1 className="not-found__text">Country Not Found. Return to main page</h1>
+                    <div className="country-details__main-back">
+                        <Link to="/">Back</Link>
                     </div>
                 </div>
-                <div className="country-borders">
-                <span className="detail-heading bc">Border Countries: </span>
-                            { props.country[0].borders ? props.country[0].borders.map((border, idx) => (<span className="border-country dark-mode-elements" key={border}>{border}</span>
-                    )) : <span></span>}
-                </div>
             </div>
-        </section>
-    )
+        )
+    }else {
+        return (
+        <div className="container">
+            <section className="country-details">
+                <div className="country-details__main">
+                    <div className="country-details__main-back">
+                        <Link to="/">Back</Link>
+                    </div>
+                    <div className="country-details__main-flag">
+                        <img src={country.flag} alt={`${country.name} flag`} />
+                    </div>
+                </div>
+                <div className="country-details__secondary">
+                    <div className="country-details__secondary-country-info">
+                        <div>
+                            <ul>
+                                <li className="country-info__details"><span className="country-info__details-header">Native Name:</span> {country.name}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Population:</span> {country.population.toLocaleString()}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Region:</span> {country.region}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Sub Region:</span> {country.subregion}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Capitol:</span> {country.capital}</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <ul>
+                                <li className="country-info__details"><span className="country-info__details-header">Top Level Domain:</span> {country.topLevelDomain}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Currencies:</span> {country.currencies[0].name}</li>
+                                <li className="country-info__details"><span className="country-info__details-header">Languages:</span> {country.languages[0].name}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className="country-details__secondary-country-borders">
+                        <span>Border Countries: </span>
+                                <ul className="country-borders__borders-list">
+                                    { country.borders ? country.borders.map((border, idx) => (<li className="country-border__border-list__item" key={border}>{border}</li>)) : <></> }
+                                </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        )
+    }
 }
 
 export default Details;

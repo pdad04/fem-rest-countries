@@ -37,9 +37,15 @@
 
 .home-container {
   width: 100%;
-  max-width: 500px;
   padding: 2em;
   margin: 0 auto;
+}
+
+.home-container__countries {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
 }
 
 .search-filter {
@@ -61,11 +67,17 @@
 .region-select__region {
   cursor: pointer;
   display: inline-block;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   padding: 1em 0.25em;
   background-color: hsl(209, 23%, 22%);
   border-radius: 0.5rem;
-  width: 5rem;
+  width: 5.5rem;
   text-align: center;
+}
+
+.region-select__region:hover {
+  background-color: hsla(209, 23%, 22%, 0.3);
 }
 
 .region-select__region-active {
@@ -96,10 +108,16 @@
 .card {
   display: inline-block;
   margin-bottom: 1rem;
+  max-width: 300px;
+}
+
+.home-countries:hover {
+  background-color: hsla(209, 23%, 22%, 0.3);
 }
 
 .img {
   width: 100%;
+  height: 18.75rem;
   padding: 0.25rem;
 }
 
@@ -115,14 +133,26 @@ img {
   padding: 1rem;
 }
 
+.home-countries-details__country {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
 .home-countries-details__text {
   list-style: none;
   margin: 0;
   padding: 0;
 }
 
+.home-countries-details__text-header {
+  font-family: "Montserrat", sans-serif;
+  font-weight: 700;
+}
+
 .home-countries-details__text li {
   margin: 0.5rem 0;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
 }
 
 .search {

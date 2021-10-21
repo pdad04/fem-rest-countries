@@ -47,29 +47,31 @@ function Home(props) {
                     </ul>
                 </div>
             </div>
-            {props.countries.map((country, idx) => (
-                <Link to={{ pathname:`/details/${country.name}` }} key={country.name} className="card">
-                    <div 
-                        className="home-countries dark-mode-elements" 
-                        data-index={idx}
-                        onClick={props.getDetails()}
-                    >
-                    <div className="country-flag">
-                        <div className="img">
-                            <img src={country.flag} alt="" className="img"/>
+            <div className="home-container__countries">
+                {props.countries.map((country, idx) => (
+                    <Link to={{ pathname:`/details/${country.name}` }} key={country.name} className="card">
+                        <div
+                            className="home-countries dark-mode-elements"
+                            data-index={idx}
+                            onClick={props.getDetails()}
+                        >
+                        <div className="country-flag">
+                            <div className="img">
+                                <img src={country.flag} alt="" className="img"/>
+                            </div>
                         </div>
-                    </div>
-                        <div className="home-countries-details">
-                            <h3>{country.name}</h3>
-                            <ul className="home-countries-details__text">
-                                <li><strong>Population</strong>: {country.population.toLocaleString()}</li>
-                                <li><strong>Region</strong>: {country.region}</li>
-                                <li><strong>Capital</strong>: {country.capital ? country.capital : 'N/A'}</li>
-                            </ul>
+                            <div className="home-countries-details">
+                                <h3 className="home-countries-details__country">{country.name}</h3>
+                                <ul className="home-countries-details__text">
+                                    <li><span className="home-countries-details__text-header">Population:</span> {country.population.toLocaleString()}</li>
+                                    <li><span className="home-countries-details__text-header">Region: </span>{country.region}</li>
+                                    <li><span className="home-countries-details__text-header">Capital: </span>{country.capital ? country.capital : 'N/A'}</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                </Link>
-            ))}
+                    </Link>
+                ))}
+            </div>
         </section>
     )
 }

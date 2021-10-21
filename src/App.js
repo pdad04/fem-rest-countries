@@ -51,6 +51,7 @@ function App() {
   }
 
   async function getDetails(e){
+    console.log(e.currentTarget);
     const index = parseInt(e.currentTarget.dataset.index);
     const country = countries.slice(index, index + 1);
     setDetailCountry(country);
@@ -74,10 +75,11 @@ function App() {
               error={error}
             />)}
           />
-          <Route path="/details"
+          <Route path="/details/:id"
                  render={props => (
                    <Details {...props}
                     country={detailCountry}
+                    getAll={fetchAllCountries}
                  />)}
           />
       </Router>
