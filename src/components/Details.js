@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment} from 'react';
+import React, { useEffect, Fragment} from 'react';
 import { Link } from 'react-router-dom';
 import './styles/Details.css';
 
@@ -10,7 +10,7 @@ function Details(props) {
         if(!localStorage.getItem(currentCountry) && props.country) {
             localStorage.setItem(currentCountry, JSON.stringify(props.country[0]));
         }
-    }, [])
+    })
 
     if(!country) { 
         return (

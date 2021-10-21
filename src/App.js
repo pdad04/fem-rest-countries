@@ -51,7 +51,6 @@ function App() {
   }
 
   async function getDetails(e){
-    console.log(e.currentTarget);
     const index = parseInt(e.currentTarget.dataset.index);
     const country = countries.slice(index, index + 1);
     setDetailCountry(country);

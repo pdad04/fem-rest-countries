@@ -7,6 +7,10 @@ function Home(props) {
     useEffect(() => {
         const regionSelect = document.querySelectorAll(".region-select__region");
         regionSelect.forEach(el => el.addEventListener('click', toggleActiveRegion));
+
+        return() => {
+            regionSelect.forEach(el => el.removeEventListener("click", toggleActiveRegion));
+        }
     }, []);
 
     const toggleActiveRegion = (e) => {
